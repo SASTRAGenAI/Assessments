@@ -9,4 +9,3 @@ python-docx
 load_dotenv
 scikit-learn
 xgboost>=1.6.0
-cv2
