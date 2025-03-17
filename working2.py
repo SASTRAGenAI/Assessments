@@ -14,6 +14,7 @@ import sqlite3
 import os
 from io import BytesIO
 from dotenv import load_dotenv
+import xgboost as xgb
 
 # ---------------- NEW IMPORTS (PLACEHOLDERS) ----------------
 # You may need to install these libraries if you actually want to use them
