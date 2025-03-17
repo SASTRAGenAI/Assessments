@@ -343,7 +343,7 @@ elif page == "📖 AI-Powered Storytelling":
 
             st.session_state.story_conversation.append({"role": "User", "content": user_reply})
             st.session_state.story_conversation.append({"role": "AI Storyteller", "content": follow_up_story})
-            st.experimental_rerun()
+            st.rerun()
 
 # ---------------- PAGE: TAKE QUIZ ----------------
 elif page == "📝 Take Quiz":
@@ -389,7 +389,7 @@ elif page == "📝 Take Quiz":
                         response_text = response_text.split("```")[1].split("```")[0].strip()
                     
                     st.session_state.current_question = json.loads(response_text)
-                    st.experimental_rerun()
+                    st.rerun()
                 except Exception as e:
                     st.error(f"Error generating question: {str(e)}")
                     st.write("Response received:", response.choices[0].message.content)
@@ -450,7 +450,7 @@ elif page == "📝 Take Quiz":
                                 "correct": "They can automatically learn complex patterns from data"
                             }
                 
-                st.experimental_rerun()
+                st.rerun()
 
     elif st.session_state.quiz_active and st.session_state.question_count >= st.session_state.total_questions:
         st.success(f"Quiz Complete! Your Final Score: {st.session_state.score}/{st.session_state.total_questions}")
@@ -474,7 +474,7 @@ elif page == "📝 Take Quiz":
         
         if st.button("Restart Quiz"):
             st.session_state.quiz_active = False
-            st.experimental_rerun()
+            st.rerun()
 
 # ---------------- PAGE: QUIZ HISTORY ----------------
 elif page == "📚 Quiz History":
