@@ -15,7 +15,8 @@ import os
 from io import BytesIO
 from dotenv import load_dotenv
 import xgboost as xgb
-
+import numpy as np
+import cv2
 # ---------------- NEW IMPORTS (PLACEHOLDERS) ----------------
 # You may need to install these libraries if you actually want to use them
 # !pip install opencv-python face_recognition xgboost scikit-learn
