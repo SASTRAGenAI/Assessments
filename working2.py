@@ -948,7 +948,7 @@ elif page == "📈 ML Performance Tracking & Prediction":
 
             # Placeholder XGBoost regressor
             model = xgb.XGBRegressor(n_estimators=10, use_label_encoder=False)
-            model.fit(X_train, y_train, eval_metric='rmse', verbose=False)
+            model.fit(X_train, y_train, eval_set=[(X_test, y_test)], eval_metric='logloss')
             preds = model.predict(X_test)
             score = r2_score(y_test, preds)
             st.success(f"Sample XGBoost R2 Score: {score:.2f}")
