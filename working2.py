@@ -979,21 +979,28 @@ elif page == "🔒 AI Proctoring & Integrity Checks":
     )
 
     # Placeholder face recognition
+    # File uploader
     face_image = st.file_uploader("Upload a photo for face verification", type=["png", "jpg", "jpeg"])
+
     if face_image is not None:
-        file_bytes = np.asarray(bytearray(face_image.read()), dtype=np.uint8)
         try:
+            # Read file bytes properly
+            file_bytes = np.asarray(bytearray(face_image.read()), dtype=np.uint8)
+
+            # Decode image from memory buffer
             cv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-            st.image(cv_image, caption="Uploaded Face Image", use_column_width=True)
+        
+            if cv_image is not None:
+                st.image(cv_image, caption="Uploaded Face Image", use_column_width=True)
 
-            if st.button("Run Face Recognition"):
-                st.info("Performing face recognition... (placeholder)")
-                # You would load a known face embedding, compare with uploaded image, etc.
-                # e.g. face_recognition.compare_faces(known_encodings, face_encoding)
-                st.success("Identity verified with high confidence. (Placeholder result)")
+                if st.button("Run Face Recognition"):
+                    st.info("Performing face recognition... (placeholder)")
+                    st.success("Identity verified with high confidence. (Placeholder result)")
+            else:
+                st.error("Error: Could not decode the image. Please try a different file.")
         except Exception as e:
-            st.error(f"Error reading image: {str(e)}")
-
+            st.error(f"Error processing image: {str(e)}")
+        
     # Placeholder for eye tracking or behavior analysis
     st.write("For advanced proctoring (eye tracking, behavior analysis), you'd typically need a live camera feed.")
     st.write("Below is just a placeholder demonstration.")
