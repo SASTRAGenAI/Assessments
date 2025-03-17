@@ -8,3 +8,4 @@ pymupdf
 python-docx
 load_dotenv
 scikit-learn
+xgboost
